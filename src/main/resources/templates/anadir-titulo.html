@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>CineLista - Anadir titulo</title>
+    <th:block th:replace="~{fragments/cabecera :: comunes}"></th:block>
+    <th:block th:replace="~{fragments/cabecera :: agregar}"></th:block>
+
+    <style>
+        nav a:nth-child(2) {
+            background: #FF914D;
+            color: #172A46;
+        }
+
+    </style>
+</head>
+<body>
+
+<div th:replace="~{fragments/nav :: nav}"></div>
+
+<!--
+  TODO:
+  El formulario de abajo tiene solo el campo "titulo" a proposito. Falta
+  por vuestra parte anadir: genero, plataforma, estado y valoracion,
+  colocando el boton de guardar al final, eligiendo el control html5 mas
+  adecuado para cada campo (checkbox, radio, select, etc.) y maquetandolo
+  con el editor visual + Bootstrap.
+
+  El envio ya esta conectado: hace POST a /anadir-titulo y el controlador
+  (PeliculaController) guarda la pelicula en el repositorio.
+-->
+<main>
+    <h1>AÑADIR TÍTULO</h1>
+
+    <section class="form-container">
+        <!--
+            El formulario envía los datos mediante POST al controlador.
+            Cambia "PeliculasController.php" por la ruta real de tu controlador.
+        -->
+        <form action="/anadir-titulo" method="POST">
+
+            <div class="campo">
+                <label for="titulo">Título:</label>
+                <input type="text" id="titulo" name="titulo" required>
+            </div>
+
+            <div class="campo">
+                <label for="genero">Género:</label>
+                <input type="text" id="genero" name="genero" required>
+            </div>
+
+            <div class="campo">
+                <label for="plataforma">Plataforma:</label>
+                <input type="text" id="plataforma" name="plataforma" required>
+            </div>
+
+            <div class="campo">
+                <label for="estado">Estado:</label>
+                <select id="estado" name="estado" required>
+                    <option value="" selected disabled>Selecciona un estado</option>
+                    <option value="pendiente">Pendiente</option>
+                    <option value="vista">Vista</option>
+                </select>
+            </div>
+
+            <div class="campo">
+                <label>Valoración:</label>
+
+                <div class="estrellas">
+                    <input type="radio" id="estrella5" name="valoracion" value="5">
+                    <label for="estrella5">★</label>
+
+                    <input type="radio" id="estrella4" name="valoracion" value="4">
+                    <label for="estrella4">★</label>
+
+                    <input type="radio" id="estrella3" name="valoracion" value="3">
+                    <label for="estrella3">★</label>
+
+                    <input type="radio" id="estrella2" name="valoracion" value="2">
+                    <label for="estrella2">★</label>
+
+                    <input type="radio" id="estrella1" name="valoracion" value="1" required>
+                    <label for="estrella1">★</label>
+                </div>
+            </div>
+
+            <div class="campo sin-label guardar">
+                <button type="submit">Guardar</button>
+            </div>
+
+        </form>
+    </section>
+</main>
+</body>
+</html>

@@ -1,0 +1,137 @@
+nav a:nth-child(2),
+nav a:hover {
+    background: #FF914D;
+    color: #172A46;
+}
+
+.form-container {
+    min-height: 229px;
+    background: #FF914D;
+    padding: 28px 38px 23px;
+}
+
+form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 90px;
+    row-gap: 26px;
+    align-items: end;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+label {
+    height: 30px;
+    padding: 8px 4px;
+    background: #172A46;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+input,
+select {
+    width: 100%;
+    height: 40px;
+    border: solid;
+    outline: none;
+    background: #e8e8e8;
+    border-color: #172A46;
+    padding: 8px 10px;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.campo label+input,
+.campo label+select {
+    margin-top: 0;
+    padding: 8px 10px;
+}
+
+.campo.sin-label {
+    padding-top: 0;
+}
+
+.campo.sin-label button {
+    width: 100%;
+    height: 31px;
+    border: solid;
+    background: #FFC857;
+    color: #172A46;
+    border-color: #172A46;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.campo.sin-label button:hover {
+    background: #172A46;
+    color: #FFC857;
+}
+
+/* Ajuste para que el botón quede en la columna derecha,
+           debajo de Estado, como en la imagen. */
+.guardar {
+    grid-column: 2;
+}
+
+@media (max-width: 600px) {
+    nav {
+        height: auto;
+        min-height: 71px;
+        flex-wrap: wrap;
+        padding: 12px 15px;
+    }
+
+    main {
+        width: calc(100% - 30px);
+    }
+
+    form {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .form-container {
+        padding: 25px;
+    }
+}
+
+.estrellas {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    background: #e8e8e8;
+    border: solid;
+    border-color: #172A46;
+    height: 35px;
+    padding-left: 8px;
+}
+
+.estrellas input {
+    display: none;
+}
+
+.estrellas label {
+    background: transparent;
+    padding: 0;
+    width: 25px;
+    height: 30px;
+    font-size: 2rem;
+    line-height: 28px;
+    color: #aaa;
+    cursor: pointer;
+}
+
+/* Cuando pasas el ratón */
+.estrellas label:hover,
+.estrellas label:hover~label {
+    color: #f5c518;
+}
+
+/* Cuando seleccionas una estrella */
+.estrellas input:checked~label {
+    color: #f5c518;
+}

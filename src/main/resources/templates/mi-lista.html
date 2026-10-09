@@ -1,0 +1,70 @@
+<head>
+    <th:block th:replace="~{fragments/cabecera :: comunes}"></th:block>
+    <th:block th:replace="~{fragments/cabecera :: mi-lista}"></th:block>
+    <meta charSet="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>CineLista - Mi lista</title>
+    <style>
+        nav a:nth-child(1) {
+            background: #FF914D;
+            color: #172A46;
+        }
+    </style>
+</head>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+    <div th:replace="~{fragments/nav :: nav}"></div>
+
+    <!--
+  TODO:
+  La tabla de abajo esta reducida a una sola columna a proposito. Falta
+  por vuestra parte:
+   1) Disenar el prototipo con un editor visual (GrapesJS, Pinegrow, etc.)
+   2) Anadir el resto de columnas: genero, plataforma, estado, valoracion
+   3) Anadir un boton de borrar (decidid vosotros si va por fila o en comun,
+      justificandolo)
+   4) Maquetar con Bootstrap
+   5) Comentar en el HTML generado donde dice "autogenerado"
+
+  El modelo ya trae la lista de peliculas en la variable "peliculas"
+  (Collection<Pelicula> con id y titulo). La ruta de borrado existe
+  (POST /mi-lista/eliminar/{id}) pero el controlador (PeliculaController,
+  metodo eliminar) esta a medias: teneis que completarlo vosotros.
+-->
+    <main>
+
+        <h1>MI LISTA</h1>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Titulo</th>
+                    <th>Genero</th>
+                    <th>Plataforma</th>
+                    <th>Estado</th>
+                    <th>Valoracion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="p : ${peliculas}">
+                    <td th:text="${p.titulo}">Titulo</td>
+                    <td th:text="${p.genero}">Genero</td>
+                    <td th:text="${p.plataforma}">Plataforma</td>
+                    <td th:text="${p.estado}">Estado</td>
+                    <td>
+                        <span th:each="i : ${#numbers.sequence(1, 5)}" th:text="${i <= p.valoracion ? '★' : '☆'}"</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p th:if="${#lists.isEmpty(peliculas)}">Todavia no hay peliculas registradas.</p>
+    </main>
+
+</body>
+
+</html>
