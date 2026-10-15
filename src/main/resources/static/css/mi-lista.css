@@ -3,37 +3,3 @@ nav a:hover {
     background: #FF914D;
     color: #172A46;
 }
-
-body {
-    font-size: 1.5rem;
-}
-
-table {
-    width: max-content;
-    margin-inline: auto;
-    margin-top: 5%;
-    border-collapse: collapse;
-    max-width: 80%;
-}
-
-th,
-td {
-    border: solid;
-    border-color: #FF914D;
-    padding: 5px;
-    font-size: 4vh;
-}
-
-th {
-    background-color: #FF914D;
-    color: #172A46;
-}
-
-td {
-    background-color: #172A46;
-    color: #FF914D;
-}
-
-tr td:nth-child(5) {
-    color: #FFC857;
-}

@@ -5,6 +5,7 @@
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5rem;
     background: #172A46;
     color: white;
 }
@@ -92,4 +93,34 @@ main {
 /* Cuando seleccionas una estrella */
 .estrellas input:checked~label {
     color: #f5c518;
+}
+
+table {
+    width: max-content;
+    margin-inline: auto;
+    margin-top: 5%;
+    border-collapse: collapse;
+    max-width: 80%;
+}
+
+th,
+td {
+    border: solid;
+    border-color: #FF914D;
+    padding: 5px;
+    font-size: 4vh;
+}
+
+th {
+    background-color: #FF914D;
+    color: #172A46;
+}
+
+td {
+    background-color: #172A46;
+    color: #FF914D;
+}
+
+tr td:nth-child(5) {
+    color: #FFC857;
 }
