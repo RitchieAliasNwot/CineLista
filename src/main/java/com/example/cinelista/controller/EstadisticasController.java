@@ -3,6 +3,7 @@ package com.example.cinelista.controller;
 import com.example.cinelista.model.Estadistica;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -25,8 +26,7 @@ public class EstadisticasController {
             new Estadistica(2L, "El Ultimo Faro"),
             new Estadistica(3L, "Codigo Fantasma"),
             new Estadistica(4L, "Risas de Medianoche"),
-            new Estadistica(5L, "Fuego Cruzado")
-    );
+            new Estadistica(5L, "Fuego Cruzado"));
 
     @GetMapping("/estadisticas")
     public String estadisticas() {
@@ -34,7 +34,13 @@ public class EstadisticasController {
     }
 
     // TODO:
-    // @GetMapping("/api/estadisticas")
-    // @ResponseBody
-    // public List<?> apiEstadisticas() { ... }
+    @GetMapping("/api/estadisticas")
+    @ResponseBody
+    public List<Estadistica> listar() {
+        return List.of(
+                new Estadistica("Película A", "Drama", 1200000, 4),
+                new Estadistica("Serie B", "Comedia", 800000, 3),
+                new Estadistica("Película C", "Ciencia ficción", 2200000, 5)
+            );
+    }
 }

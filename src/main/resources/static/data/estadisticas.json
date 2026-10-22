@@ -3,30 +3,30 @@
     "titulo": "Nebula Roja",
     "genero": "Ciencia ficcion",
     "taquilla": 82000000,
-    "nota": 8
+    "nota": 5
   },
   {
     "titulo": "El Ultimo Faro",
     "genero": "Drama",
     "taquilla": 15000000,
-    "nota": 9
+    "nota": 4
   },
   {
     "titulo": "Codigo Fantasma",
     "genero": "Thriller",
     "taquilla": 47000000,
-    "nota": 7
+    "nota": 3
   },
   {
     "titulo": "Risas de Medianoche",
     "genero": "Comedia",
     "taquilla": 23000000,
-    "nota": 6
+    "nota": 2
   },
   {
     "titulo": "Fuego Cruzado",
     "genero": "Accion",
     "taquilla": 96000000,
-    "nota": 8
+    "nota": 1
   }
 ]

@@ -15,13 +15,46 @@ public class Estadistica {
 
     private Long id;
     private String titulo;
-
-    public Estadistica() {
-    }
+    private String genero;
+    private long taquilla;
 
     public Estadistica(Long id, String titulo) {
         this.id = id;
         this.titulo = titulo;
+    }    
+    
+    public Estadistica(String titulo, String genero, long taquilla, int nota) {
+        this.titulo = titulo;
+        this.genero = genero;
+        this.taquilla = taquilla;
+        this.nota = nota;
+    }
+    
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
+    public void setTaquilla(long taquilla) {
+        this.taquilla = taquilla;
+    }
+
+    public void setNota(int nota) {
+        this.nota = nota;
+    }
+
+    private int nota;
+
+    
+    public String getGenero() {
+        return genero;
+    }
+
+    public long getTaquilla() {
+        return taquilla;
+    }
+
+    public int getNota() {
+        return nota;
     }
 
     public Long getId() {
