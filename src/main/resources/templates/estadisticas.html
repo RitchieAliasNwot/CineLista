@@ -42,7 +42,16 @@
                         { data: 'genero' },
                         { data: 'taquilla' },
                         { data: 'nota' }
-                    ]
+                    ],
+                    searching: true,
+                    footerCallback: function(row, data, start, end, display) {
+                        const api = this.api();
+                        const total = api
+                            .column(2, {search, 'applied'})
+                            .data()
+                            .reduce((a, b) => Number(a) + Number(b), 0);
+                        $(api.column(2).footer()).html(total)
+                    }
                 });
             });
         </script>
