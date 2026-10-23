@@ -41,17 +41,28 @@
                         { data: 'titulo' },
                         { data: 'genero' },
                         { data: 'taquilla' },
-                        { data: 'nota' }
+                        {
+                            data: 'nota',
+                            render: function (data, type, row) {
+                                if (type !== 'display') return data; // no tocar el valor al ordenar/filtrar, solo al mostrarlo
+                                const maxNota = 5;
+                                const pct = Math.round((data / maxNota) * 100);
+                                return `<div class="barra-datos" style="width:${pct}%">${data}</div>`;
+                            }
+                        }
                     ],
                     searching: true,
-                    footerCallback: function(row, data, start, end, display) {
+                    footerCallback: function (row, data, start, end, display) {
                         const api = this.api();
+                        // Suma la columna 'taquilla' (índice 2) solo de las filas visibles tras el filtro
                         const total = api
-                            .column(2, {search, 'applied'})
+                            .column(2, { search: 'applied' })
                             .data()
                             .reduce((a, b) => Number(a) + Number(b), 0);
-                        $(api.column(2).footer()).html(total)
-                    }
+                        $(api.column(2).footer()).html(total);
+                    },
+                    dom: 'Bfrtip', // B = Buttons, f = filtro, r = processing, t = tabla, i = info, p = paginación
+                    buttons: ['csv']
                 });
             });
         </script>
