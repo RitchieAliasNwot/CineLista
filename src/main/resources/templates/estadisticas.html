@@ -62,7 +62,13 @@
                         $(api.column(2).footer()).html(total);
                     },
                     dom: 'Bfrtip', // B = Buttons, f = filtro, r = processing, t = tabla, i = info, p = paginación
-                    buttons: ['csv']
+                    buttons: [
+                        {
+                            extend: 'csv',
+                            filename: 'cinelista_estadisticas',
+                            title: null // evita que se añada una fila de título dentro del propio CSV
+                        }
+                    ]
                 });
             });
         </script>
