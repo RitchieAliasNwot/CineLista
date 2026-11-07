@@ -25,10 +25,10 @@ import java.util.List;
 public class EstrenosController {
 
     private static final List<Estreno> ESTRENOS = List.of(
-            new Estreno(1L, "Nebula Roja"),
-            new Estreno(2L, "El Ultimo Faro"),
-            new Estreno(3L, "Codigo Fantasma"),
-            new Estreno(4L, "Risas de Medianoche")
+            new Estreno(1L, "Nebula Roja", "2026-11-14", "Ciencia ficcion", "Netflix"),
+            new Estreno(2L, "El Ultimo Faro", "2026-11-21", "Drama", "HBO Max"),
+            new Estreno(3L, "Codigo Fantasma", "2026-12-05", "Thriller", "Amazon Prime Video"),
+            new Estreno(4L, "Risas de Medianoche", "2026-12-12", "Comedia", "Disney+")
     );
 
     @GetMapping("/estrenos")

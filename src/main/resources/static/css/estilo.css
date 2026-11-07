@@ -53,6 +53,25 @@ h1 {
     font-size: 12vh;
 }
 
+h3 {
+    margin: 0 0 13px;
+    margin-top: 2vh;
+    color: #FF914D;
+    font-size: 2rem;
+}
+
+button {
+    justify-content: center;
+    padding: 10px;
+    background: #FF914D;
+    color: #172A46;
+    border-style: none;
+}
+
+p {
+    color: #FF914D;
+}
+
 main {
     width: 70%;
     margin: 13px auto 0;

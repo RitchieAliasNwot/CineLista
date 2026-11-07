@@ -12,6 +12,8 @@
          color: #172A46;
       }
    </style>
+   <script type="text/babel" src="js/componentes/TarjetaEstreno.js"></script>
+   <script type="text/babel" src="js/estrenos.js"></script>
 </head>
 
 <body>
@@ -33,18 +35,19 @@
             La lista HTML donde debe montarse cada tarjeta ya tiene el id esperado:
             -->
       <ul id="lista-estrenos">
-         <tr th:each = "e : ${estrenos}">
-            <td th:text = "${e.titulo}"></td>
-            <td th:text = "${e.fechaEstreno}"></td>
-            <td th:text = "${e.genero}"></td>
-            <td th:text = "${e.platforma}"></td>
-            <td th:text = "${e.estado}"></td>
+         <tr th:each="e : ${estrenos}">
+            <td th:text="${e.titulo}">Titulo</td>
+            <td th:text="${e.fechaEstreno}">FechaEstreno</td>
+            <td th:text="${e.genero}">Genero</td>
+            <td th:text="${e.plataforma}">Plataforma</td>
+            <td th:text="${e.estado}">Estado</td>
             <td>
-               <span th:each="i:${numbers.sequence(1,5)}" th:text="{i <= e.valoracion ? '☆' : '★'}"></span>
+               <span th:each="i : ${#numbers.sequence(1, 5)}" th:text="${i <= e.valoracion ? '★' : '☆'}"></span>
             </td>
          </tr>
       </ul>
    </main>
 
 </body>
+
 </html>
