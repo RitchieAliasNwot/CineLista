@@ -32,9 +32,19 @@
 
             La lista HTML donde debe montarse cada tarjeta ya tiene el id esperado:
             -->
-      <ul id="lista-estrenos"></ul>
+      <ul id="lista-estrenos">
+         <tr th:each = "e : ${estrenos}">
+            <td th:text = "${e.titulo}"></td>
+            <td th:text = "${e.fechaEstreno}"></td>
+            <td th:text = "${e.genero}"></td>
+            <td th:text = "${e.platforma}"></td>
+            <td th:text = "${e.estado}"></td>
+            <td>
+               <span th:each="i:${numbers.sequence(1,5)}" th:text="{i <= e.valoracion ? '☆' : '★'}"></span>
+            </td>
+         </tr>
+      </ul>
    </main>
 
 </body>
-
 </html>

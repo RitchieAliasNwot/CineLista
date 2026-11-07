@@ -15,27 +15,51 @@
  *     ...
  *   ]
  */
+// TODO 1: crea un estado "estrenos" (array vacio por defecto) con
+//         React.useState([]). Necesitas tambien su funcion "setEstrenos".
+
+
+// TODO 2: usa React.useEffect (con el array de dependencias vacio []
+//         para que se ejecute UNA sola vez al montar el componente) y
+//         dentro haz fetch("/api/estrenos"):
+//           - convierte la respuesta con res.json()
+//           - guarda los datos con setEstrenos(data)
+//           - en el .catch() muestra el error con console.error(...)
+
+
+// TODO 3: devuelve un <TarjetaEstreno> por cada elemento de "estrenos"
+//         usando .map(). Recuerda:
+//           - la prop "key" debe ser un valor unico (usa estreno.id)
+//           - pasa las props titulo, fechaEstreno, genero y plataforma
+//             tal y como las define TarjetaEstreno.js
+//
+// Mientras no lo completes, el componente no pinta nada:
+
 function ListaEstrenos() {
-    // TODO 1: crea un estado "estrenos" (array vacio por defecto) con
-    //         React.useState([]). Necesitas tambien su funcion "setEstrenos".
-
-
-    // TODO 2: usa React.useEffect (con el array de dependencias vacio []
-    //         para que se ejecute UNA sola vez al montar el componente) y
-    //         dentro haz fetch("/api/estrenos"):
-    //           - convierte la respuesta con res.json()
-    //           - guarda los datos con setEstrenos(data)
-    //           - en el .catch() muestra el error con console.error(...)
-
-
-    // TODO 3: devuelve un <TarjetaEstreno> por cada elemento de "estrenos"
-    //         usando .map(). Recuerda:
-    //           - la prop "key" debe ser un valor unico (usa estreno.id)
-    //           - pasa las props titulo, fechaEstreno, genero y plataforma
-    //             tal y como las define TarjetaEstreno.js
-    //
-    // Mientras no lo completes, el componente no pinta nada:
-    return null;
+    const [estrenos, setEstrenos] = React.useState([]);
+    const [cargando, setCargando] = React.useState(true);
+    const [error, setError] = React.useState(null);
+    React.useEffect(() => {
+        fetch("/api/estrenos")
+            .then((res) => {
+                if (!res.ok) throw new Error("No se pudieron cargar los estrenos");
+                return res.json();
+            })
+            .then(setEstrenos)
+            .catch((err) => setError(err.message))
+            .finally(() => setCargando(false));
+    }, []); // array vacío: se ejecuta solo una vez, al montar el componente
+    if (cargando) return <li>Cargando...</li>;
+    if (error) return <li role="alert">{error}</li>;
+    return estrenos.map((estreno, i) => (
+        <TarjetaEstreno
+            key={i}
+            titulo={estreno.titulo}
+            fechaEstreno={estreno.fechaEstreno}
+            genero={estreno.genero}
+            plataforma={estreno.plataforma}
+        />
+    ));
 }
 
 // Monta la lista en el <ul id="lista-estrenos"> de estrenos.html.
